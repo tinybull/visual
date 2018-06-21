@@ -1,0 +1,17 @@
+{
+  "name": "@tiny-bull/visual",
+  "version": "0.0.1",
+  "author": "chunchuan liu <ccliu@zjft.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/core": ">=5.0.0",
+    "@angular/common": ">=5.0.0"
+  },
+  "ngPackage": {
+    "$schema": "./node_modules/ng-packagr/ng-package.schema.json",
+    "lib": {
+      "entryFile": "./public_api.ts"
+    },
+    "dest": "./dist"
+  }
+}

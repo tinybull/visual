@@ -1,0 +1,157 @@
+
+.carousel {
+    position: relative;
+    height: 100%;
+    .carousel-indicators {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 15;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        padding-left: 0;
+        list-style: none;
+        margin: 0 15% 0.8rem;
+        .active {
+            background-color: #fff;
+        }
+        li {
+            position: relative;
+            -webkit-box-flex: 0;
+            -ms-flex: 0 1 auto;
+            flex: 0 1 auto;
+            width: 30px;
+            height: 3px;
+            margin-right: 3px;
+            margin-left: 3px;
+            text-indent: -999px;
+            background-color: rgba(255, 255, 255, .5);
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+    .carousel-inner {
+        height: 100%;
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        .carousel-item {
+            position: relative;
+            height: 100%;
+            background-color: rgba(85, 70, 172, 0.19);
+            padding-bottom: 20px;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            width: 100%;
+            transition: -webkit-transform .6s ease;
+            transition: transform .6s ease;
+            transition: transform .6s ease, -webkit-transform .6s ease;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            -webkit-perspective: 1000px;
+            perspective: 1000px;
+        }
+    }
+    .carousel-control-prev,
+    .carousel-control-next {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        width: 15%;
+        color: #fff;
+        text-align: center;
+        opacity: .5;
+        .anticon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: transparent no-repeat center center;
+            background-size: 100% 100%;
+            font-size: 24px;
+            font-weight: bolder;
+        }
+    }
+    .carousel-control-prev {
+        left: 0;
+    }
+    .carousel-control-next {
+        right: 0;
+    }
+    a {
+        text-decoration: none;
+        background-color: transparent;
+        &:hover {
+            color: #fff;
+            outline: 0;
+            opacity: .9;
+        }
+    }
+}
+
+@keyframes lightSpeedRightIn {
+    from {
+        transform: translate3d(50%, 0, 0);
+        opacity: 0;
+    }
+
+    60% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+.lightSpeedRightIn {
+    animation-name: lightSpeedRightIn;
+    animation-timing-function: ease-out;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes lightSpeedLeftIn {
+    from {
+        transform: translate3d(-50%, 0, 0);
+        opacity: 0;
+    }
+
+    60% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+.lightSpeedLeftIn {
+    animation-name: lightSpeedLeftIn;
+    animation-timing-function: ease-out;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}

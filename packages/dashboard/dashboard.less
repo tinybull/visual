@@ -1,0 +1,121 @@
+:host {
+    height: 100%;
+    padding: 0;
+    position: relative;
+    overflow: auto;
+}
+
+:host /deep/ .ant-tabs-content.ant-tabs-content-animated {
+    @diff: 52px;
+    height: calc(~"100% - @{diff}");
+    .ant-tabs-tabpane {
+        height: 100% !important;
+    }
+}
+
+.mask {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    opacity: 0.4;
+    background: #0f0e0e;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    z-index: 1233;
+}
+
+div[nz-row] {
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+    .gutter-row {
+        height: 98%;
+    }
+    &:first-child {
+        height: 4%;
+    }
+    &:nth-child(2) {
+        height: 26%;
+    }
+    &:last-child {
+        padding-top: 15px;
+        height: 70%;
+        nz-tabset {
+            height: 99.99%;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 7px;
+            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+            nz-tab {
+                height: 100%;
+            }
+        }
+    }
+}
+
+.card-item {
+    height: 99%;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 7px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.15);
+}
+
+.anticon {
+    float: right;
+    padding: 0 3px;
+    line-height: 20px;
+    &:hover {
+        color: #21e616;
+        cursor: pointer;
+    }
+}
+
+.anticon.anticon-cross,
+.anticon.anticon-swap,
+.anticon.anticon-plus,
+.anticon.anticon-check {
+    width: 21px !important;
+    height: 21px !important;
+    &:hover {
+        background-color: #43b3f0;
+    }
+}
+
+.anticon.anticon-check {
+    margin-left: 18px;
+}
+
+.anticon.anticon-swap {
+    margin-left: 10px;
+}
+
+.overlay {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 8px;
+    right: 8px;
+    height: 20px;
+    font-size: 16px;
+    color: darkseagreen;
+    animation: flash 1s infinite alternate;
+    .title {
+        float: left;
+        font-size: 14px;
+        padding-left: 10px;
+        line-height: 20px;
+    }
+}
+
+@keyframes flash {
+    0% {
+        background-color: rgba(103, 229, 48, 0.8);
+        transform: scale(1, 1);
+    }
+
+    100% {
+        background-color: rgba(224, 229, 34, 0.99);
+        transform: scale(1.001, 1.001);
+    }
+}

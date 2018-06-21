@@ -1,0 +1,58 @@
+<div nz-row [nzGutter]="16">
+    <div nz-col [nzSpan]="20">
+        <span style="font-size: 24px;font-weight: 500;">{{name}}</span>
+        <span>{{description}}</span>
+    </div>
+    <div nz-col [nzSpan]="4" style="text-align: right;font-size: 20px;">
+        <i class="anticon anticon-edit" style="padding: 4px 27px 0 0;" *ngIf="!setting" (click)="openSettings()"></i>
+        <i class="anticon anticon-save" style="padding: 4px 27px 0 0;" *ngIf="setting" (click)="saveSetting()"></i>
+        <!--<i class="anticon anticon-close-square-o" style="padding: 4px 10px 0 0;" *ngIf="setting" (click)="cancel()"></i>-->
+    </div>
+</div>
+<div nz-row [nzGutter]="16">
+    <div nz-col class="gutter-row" [nzSpan]="6" *ngFor="let card of cards; index as i;">
+        <div class="card-item">
+            <home-chart [id]="card.id" [dashboardService]="dashboardService"></home-chart>
+        </div>
+        <div class="overlay" *ngIf="setting">
+            <span class="title">name</span>
+            <i class="anticon anticon-delete" (click)="deleteCard(i)"></i>
+            <i class="anticon anticon-edit" (click)="cardModal(card)" style="padding-right: 8px;"></i>
+        </div>
+    </div>
+</div>
+<div nz-row [nzGutter]="16">
+    <div nz-col class="gutter-row" [nzSpan]="12" *ngFor="let tabset of tabs; index as r;">
+        <nz-tabset>
+            <nz-tab *ngIf="tabset.length === 0 && setting === true">
+                <ng-template #nzTabHeading>
+                    <i class="anticon anticon-plus" (click)="addTab(r)"></i>
+                </ng-template>
+                <div style="height: 99%;"></div>
+            </nz-tab>
+            <nz-tab *ngFor="let tab of tabset; index as i; last as isLast;trackBy: trackByFn;">
+                <ng-template #nzTabHeading>
+                    {{tab.name}}
+                    <span *ngIf="setting">
+                      <i class="anticon anticon-plus" *ngIf="isLast" (click)="addTab(r)"></i>
+                      <i class="anticon anticon-cross" (click)="deleteTab(i,r)"></i>
+                      <i class="anticon anticon-swap" *ngIf="!tab.pending" (click)="openPanel(i,r)"></i>
+                      <i class="anticon anticon-check" *ngIf="tab.pending" (click)="swap(i,r)"></i>
+                    </span>
+                </ng-template>
+                <div style="height: 99%;overflow: auto;">
+                    <ng-template [ngIf]="!tab.pending">
+                        <home-chart [id]="tab.id" [dashboardService]="dashboardService"></home-chart>
+                    </ng-template>
+                    <ng-template [ngIf]="tab.pending">
+                        <tab-alt [alts]="alternatives" [index]="[i,r]" (tabSelect)="selectTab($event)"></tab-alt>
+                    </ng-template>
+                </div>
+            </nz-tab>
+        </nz-tabset>
+    </div>
+</div>
+
+<div class="mask" *ngIf="openSetting">
+    <nz-spin [nzSize]="'large'"></nz-spin>
+</div>
